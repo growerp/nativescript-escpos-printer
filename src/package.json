@@ -1,7 +1,7 @@
 {
-  "name": "nativescript-ichi-printer",
+  "name": "nativescript-escpos-printer",
   "version": "0.9.9",
-  "description": "POS printer for NativeScript",
+  "description": "ESCPOS printer for NativeScript",
   "keywords": [
     "POS printer",
     "socket",
@@ -12,34 +12,47 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mozhju/nativescript-ichi-printer.git"
+    "url": "https://github.com/growerp/nativescript-escpos-printer.git"
   },
   "author": {
-    "name": "mozhju"
+    "name": "mozhju,hansbak"
   },
   "bugs": {
-      "url": "https://github.com/mozhju/nativescript-ichi-printer/issues"
+    "url": "https://github.com/growerp/nativescript-escpos-printer/issues"
   },
-  "license": {
-      "type": "MIT",
-      "url": "https://github.com/mozhju/nativescript-ichi-printer/blob/master/LICENSE"
-  },
-  "homepage": "https://github.com/mozhju/nativescript-ichi-printer",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/growerp/nativescript-escpos-printer",
   "readmeFilename": "README.md",
   "main": "index",
-  "typyings": "index.d.ts",
+  "typings": "index.d.ts",
   "scripts": {
-    "prepublish": "tsc"
+    "tsc": "npm i && tsc",
+    "build": "npm run tsc && npm run build.native",
+    "build.native": "node scripts/build-native.js",
+    "tslint": "cd .. && tslint \"**/*.ts\" --config tslint.json --exclude \"**/node_modules/**\"",
+    "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**' --exclude '**/platforms/**'",
+    "prepack": "npm run build.native",
+    "demo.ios": "npm i && cd ../demo && tns run ios",
+    "demo.android": "npm i && cd ../demo && tns run android",
+    "demo.reset": "cd ../demo && npx rimraf -- hooks node_modules platforms package-lock.json",
+    "plugin.prepare": "npm run build && cd ../demo && tns plugin remove nativescript-escpos-printer && tns plugin add ../src",
+    "clean": "npm run demo.reset && npx rimraf -- node_modules package-lock.json && npm i"
   },
   "nativescript": {
     "platforms": {
-      "android": "2.4.0"
+      "android": "6.0.0",
+      "ios": "6.0.1"
     }
   },
   "devDependencies": {
-    "typescript": "^2.2.1"
+    "tns-core-modules": "^6.0.0",
+    "tns-platform-declarations": "^6.0.0",
+    "typescript": "~3.4.5",
+    "prompt": "^1.0.0",
+    "rimraf": "^2.6.3",
+    "tslint": "^5.12.1",
+    "semver": "^5.6.0"
   },
-  "dependencies": {
-
-  }
+  "dependencies": {},
+  "bootstrapper": "nativescript-plugin-seed"
 }

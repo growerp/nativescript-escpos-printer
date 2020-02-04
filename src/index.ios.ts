@@ -1,27 +1,46 @@
+/*
+
+generate meta data in demo dir:
+TNS_DEBUG_METADATA_PATH="$(pwd)/metadata" tns build ios
+
+Generate typings in demo dir:
+TNS_TYPESCRIPT_DECLARATIONS_PATH="$(pwd)/typings" tns build ios
+
+then copy objc!nsswiftsupport.d.ts to src/platforms/ios/typings
+and add the line:
+/// <reference path="./platforms/ios/typings/objc!nsswiftsupport.d.ts"/>
+to the file: references.d.ts
+
+*/
+
 
 
 export class PrintClient {
+    constructor(printType?: number){
+        var self = this;
+        if (!printType) {
+            printType = 0;
+        }
+    }
 
-    public onData: {(data: string): void;};
-    public onError: {(id: number, message: string): void;};
-    public onConnected: {(id: number): void;};
-    public onSent: {(id: number): void;};
-    public onClosed: {(id: number): void;};
-
-
-    public connect(servername: string, port: number): number {
-        throw "Not implemented";
+    public connect(servername: string, port: number, data: string): number {
+        var printer = new IOSPrinter()
+        printer.setupNetworkCommunicationWithServernamePort(servername, port)
+        printer.sendMessageWithMessage(data)
+        printer.closePrinter()
+        return 0
     }
 
     public close(): number {
-        throw "Not implemented";
+        return 0;
     }
 
     public send(data: Array<number>): number {
-        throw "Not implemented";
+        return 0;
     }
 
     public receive(): number {
-        throw "Not implemented";
+        console.log("==receive======not implemented =============")
+        return 0
     }
 }

@@ -82,7 +82,7 @@ export class PrintClient {
         this.client = new cn.ichi.android.Printer(listener, printType);
     }
 
-    public connect(servername: string, port: number): number {
+    public connect(servername: string, port: number, data: string): number {
         return this.client.connect(servername, port);
     }
 

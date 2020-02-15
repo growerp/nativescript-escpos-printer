@@ -9,7 +9,7 @@ nativescript-ichi-printer
 and ideas used from:
 https://www.raywenderlich.com/3437391-real-time-communication-with-streams-tutorial-for-ios#toc-anchor-004
 
-This works for Android and IOS
+This works for Android and IOS and includes full source (swift/java)
 
 use the included printer simulation to show the printouts.
 

@@ -1,25 +1,38 @@
 {
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "A native application built with NativeScript-Vue",
+  "author": "Hans Bakker <h.bakker@antwebsystems.com>",
+  "license": "MIT",
   "nativescript": {
     "id": "org.nativescript.demo",
+    "templateVersion": "v2",
     "tns-android": {
-      "version": "6.3.1"
+      "version": "6.0.0"
     },
     "tns-ios": {
-      "version": "6.3.0"
+      "version": "6.0.1"
     }
   },
-  "description": "NativeScript Application",
-  "license": "SEE LICENSE IN <your-license-filename>",
-  "repository": "<fill-your-repository-here>",
   "dependencies": {
-    "@nativescript/theme": "~2.2.1",
+    "@nativescript/theme": "^2.2.1",
     "nativescript-escpos-printer": "file:../src",
-    "tns-core-modules": "~6.3.0"
+    "nativescript-ui-dataform": "^6.0.0",
+    "nativescript-vue": "^2.4.0",
+    "tns-core-modules": "^6.0.0"
   },
   "devDependencies": {
-    "nativescript-dev-webpack": "~1.4.0",
-    "typescript": "~3.5.3"
-  },
-  "gitHead": "fa98f785df3fba482e5e2a0c76f4be1fa6dc7a14",
-  "readme": "NativeScript Application"
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "nativescript-dev-webpack": "^1.0.0",
+    "nativescript-vue-template-compiler": "^2.0.0",
+    "nativescript-worker-loader": "~0.9.0",
+    "node-sass": "^4.9.2",
+    "tns-platform-declarations": "^6.0.0",
+    "typescript": "^3.2.4",
+    "@types/node": "^12.12.16",
+    "vue": "^2.5.22",
+    "vue-loader": "^15.4.0"
+  }
 }

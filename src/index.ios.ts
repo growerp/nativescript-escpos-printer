@@ -15,6 +15,13 @@ to the file: references.d.ts
 
 
 
+export class Client {
+    print (servername: string, port: number, message: string) : boolean {
+        var printClient = new PrintClient(0);
+        printClient.connect("localhost", 9100, message)
+        return true
+    }
+}
 export class PrintClient {
     constructor(printType?: number){
         var self = this;

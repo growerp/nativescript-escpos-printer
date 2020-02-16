@@ -63,7 +63,7 @@ export class PrintClient {
         };
     
         console.log("printing now......")
-        printClient.connect(servername, 9100, null);
+        printClient.connect(servername, port, null);
     
         return true
     }

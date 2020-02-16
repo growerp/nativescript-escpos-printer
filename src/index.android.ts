@@ -35,6 +35,40 @@ declare module cn {
 
 
 export class PrintClient {
+
+    public print(servername: string, port: number, data: string): boolean {
+        var printClient = new PrintClient(0);
+        printClient.onData = (data: Array<number>) => {
+            console.log("Data from Printer: ", data);
+        };
+        printClient.onError = (id: number, message: string) => {
+            console.log("Print client error for action #", id, ": ", message);
+        };
+        printClient.onConnected = (id: number) => {
+            console.log("Print client connected action #: ", id);
+            var bytes = [];
+            for (var i = 0; i < data.length; i++) {
+                var c = data.charCodeAt(i);
+                bytes.push(c & 0xFF);
+            }
+            printClient.send(bytes);
+        };
+        printClient.onSent = (id: number) => {
+            console.log("Print client sent action #: ", id);
+            // When we are finished
+            printClient.close();
+        };
+        printClient.onClosed = (id: number) => {
+            console.log("Print client closed action #: ", id);
+        };
+    
+        console.log("printing now......")
+        printClient.connect(servername, 9100, null);
+    
+        return true
+    }
+
+    
     private client: cn.ichi.android.Printer;
     public onData: {(data: Array<number>): void;};
     public onError: {(id: number, message: string): void;};

@@ -7,6 +7,6 @@
     </ActionBar>
 
     <GridLayout>
-        <!-- Add your page content here -->
+        <Button text="Tap me to print a line!" tap="onTap"></Button>
     </GridLayout>
 </Page>

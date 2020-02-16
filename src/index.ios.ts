@@ -16,31 +16,12 @@ to the file: references.d.ts
 
 
 export class PrintClient {
-    constructor(printType?: number){
-        var self = this;
-        if (!printType) {
-            printType = 0;
-        }
-    }
 
-    public connect(servername: string, port: number, data: string): number {
+    public print(servername: string, port: number, data: string): boolean {
         var printer = new IOSPrinter()
         printer.setupNetworkCommunicationWithServernamePort(servername, port)
         printer.sendMessageWithMessage(data)
         printer.closePrinter()
-        return 0
-    }
-
-    public close(): number {
-        return 0;
-    }
-
-    public send(data: Array<number>): number {
-        return 0;
-    }
-
-    public receive(): number {
-        console.log("==receive======not implemented =============")
-        return 0
+        return true
     }
 }

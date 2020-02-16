@@ -6,16 +6,19 @@
     "POS printer",
     "socket",
     "USB",
-    "Bluetooth",
     "nativescript",
-    "javascript"
+    "javascript",
+    "swift",
+    "java",
+    "IOS",
+    "Android"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/growerp/nativescript-escpos-printer.git"
   },
   "author": {
-    "name": "mozhju,hansbak"
+    "name": "Hans Bakker"
   },
   "bugs": {
     "url": "https://github.com/growerp/nativescript-escpos-printer/issues"

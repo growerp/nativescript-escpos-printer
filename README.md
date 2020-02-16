@@ -20,9 +20,12 @@ tns plugin add nativescript-escpos-printer
 ## Usage
 
 ```javascript
-  import { Client } from 'nativescript-escpos-printer';
-  if (!client.print(servername, port, message))
-    alert("printer error...")
+import { PrintClient } from 'nativescript-escpos-printer';
+import { isIOS } from 'tns-core-modules/platform';
+var printClient = new PrintClient
+var message = "Print test String!";
+printClient.print(
+    isIOS? 'localhost' : '10.0.2.2', 9100, message)  
 ```
 
 ## API

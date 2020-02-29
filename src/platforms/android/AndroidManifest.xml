@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- 允许程序连接到已配对的蓝牙设备 -->
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <!-- 允许程序访问网络 -->
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

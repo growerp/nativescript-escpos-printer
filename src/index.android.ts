@@ -32,43 +32,7 @@ declare module cn {
         }
     }
 }
-
-
-export class PrintClient {
-
-    public print(servername: string, port: number, data: string): boolean {
-        var printClient = new PrintClient(0);
-        printClient.onData = (data: Array<number>) => {
-            console.log("Data from Printer: ", data);
-        };
-        printClient.onError = (id: number, message: string) => {
-            console.log("Print client error for action #", id, ": ", message);
-        };
-        printClient.onConnected = (id: number) => {
-            console.log("Print client connected action #: ", id);
-            var bytes = [];
-            for (var i = 0; i < data.length; i++) {
-                var c = data.charCodeAt(i);
-                bytes.push(c & 0xFF);
-            }
-            printClient.send(bytes);
-        };
-        printClient.onSent = (id: number) => {
-            console.log("Print client sent action #: ", id);
-            // When we are finished
-            printClient.close();
-        };
-        printClient.onClosed = (id: number) => {
-            console.log("Print client closed action #: ", id);
-        };
-    
-        console.log("printing now......")
-        printClient.connect(servername, port, null);
-    
-        return true
-    }
-
-    
+class PrintClient {
     private client: cn.ichi.android.Printer;
     public onData: {(data: Array<number>): void;};
     public onError: {(id: number, message: string): void;};
@@ -116,7 +80,7 @@ export class PrintClient {
         this.client = new cn.ichi.android.Printer(listener, printType);
     }
 
-    public connect(servername: string, port: number, data: string): number {
+    public connect(servername: string, port: number): number {
         return this.client.connect(servername, port);
     }
 
@@ -159,5 +123,49 @@ export class PrintClient {
         }
     }
 }
+export class Printer {
+    print(ip: string, port: number, message: string): any {
+        let result = 'notYet'
+        let count = 0
+        console.log("printer start.....ip: " + ip + ' port: ' + port)
+        var printClient = new PrintClient(0);
 
+        printClient.onData = (data: Array<number>) => {
+            console.log("Data from Printer: ", data);
+        };
+        printClient.onError = (id: number, message: string) => {
+            console.log("Print client error for action #", id, ": ", message);
+            result = 'false'
+        };
+        printClient.onConnected = (id: number) => {
+            console.log("Print client connected action #: ", id);
+            var bytes = [];
+            for (var i = 0; i < message.length; i++) {
+                var c = message.charCodeAt(i);
+                bytes.push(c & 0xFF);
+            }
+            printClient.send(bytes);
+        };
+        printClient.onSent = (id: number) => {
+            console.log("Print client sent action #: ", id);
+            // When we are finished
+            printClient.close();
+        };
+        printClient.onClosed = (id: number) => {
+            console.log("Print client closed action #: ", id);
+            result = 'true'
+        };
+
+        // Connect printer (type: TCP), param: IP, port
+        printClient.connect(ip, port);
+        
+        return (async() => {
+            console.log("waiting for result");
+            while(result === 'notYet') 
+                await new Promise(resolve => setTimeout(resolve, 1000));
+            console.log("finished... result: " + result)
+            return result==='true'?true:false
+        })();
+    }
+}
 

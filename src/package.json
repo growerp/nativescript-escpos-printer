@@ -5,7 +5,6 @@
   "keywords": [
     "POS printer",
     "socket",
-    "USB",
     "nativescript",
     "javascript",
     "swift",
@@ -18,7 +17,7 @@
     "url": "https://github.com/growerp/nativescript-escpos-printer.git"
   },
   "author": {
-    "name": "Hans Bakker"
+    "name": "GrowERP: Hans Bakker"
   },
   "bugs": {
     "url": "https://github.com/growerp/nativescript-escpos-printer/issues"

@@ -41,9 +41,11 @@
     "clean": "npm run demo.reset && npx rimraf -- node_modules package-lock.json && npm i"
   },
   "nativescript": {
-    "platforms": {
-      "android": "6.0.0",
-      "ios": "6.0.1"
+    "tns-android": {
+      "version": "6.3.1"
+    },
+    "tns-ios": {
+      "version": "6.3.0"
     }
   },
   "devDependencies": {

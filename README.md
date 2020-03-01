@@ -34,3 +34,7 @@ printer.print(isIOS? 'localhost' : '10.0.2.2', 9100, "Print test String!")
 ## License
 
 Apache License Version 2.0, January 2004
+
+## known problems
+in IOS, the app will get stuck when a printer is defined, but not found or switched off.
+(looks like outputStream.hasSpaceAvailable in IOS swift, always returns false, even if connected)

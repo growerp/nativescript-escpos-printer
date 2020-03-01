@@ -1,30 +1,32 @@
 {
-  "name": "hw",
-  "version": "1.0.0",
-  "description": "A native application built with NativeScript-Vue",
+  "name": "nativescipt-escpos-printer",
+  "version": "2.0.0",
+  "description": "A Demo application for escpos printer",
   "author": "Hans Bakker <h.bakker@antwebsystems.com>",
   "license": "MIT",
   "nativescript": {
     "id": "org.nativescript.application",
     "templateVersion": "v2",
     "tns-android": {
-      "version": "6.0.0"
+      "version": "6.3.1"
     },
     "tns-ios": {
-      "version": "6.0.1"
+      "version": "6.3.0"
     }
   },
   "dependencies": {
+    "@vue/devtools": "^5.0.6",
     "nativescript-escpos-printer": "file:../src",
+    "nativescript-socketio": "^3.2.1",
     "nativescript-ui-dataform": "^6.0.0",
     "nativescript-vue": "^2.4.0",
-    "tns-core-modules": "^6.0.0"
+    "tns-core-modules": "^6.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "babel-loader": "^8.0.2",
-    "nativescript-dev-webpack": "^1.0.0",
+    "nativescript-dev-webpack": "^1.5.1",
     "nativescript-vue-template-compiler": "^2.0.0",
     "nativescript-worker-loader": "~0.9.0",
     "node-sass": "^4.9.2",

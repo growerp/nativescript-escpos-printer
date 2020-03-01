@@ -33,15 +33,13 @@ class IOSPrinter: NSObject {
     outputStream.open()
   }
 
-  @objc dynamic open func sendMessage(message: String) {
-    let data = "\(message)".data(using: .utf8)!
-    _ = data.withUnsafeBytes {
-      guard let pointer = $0.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
-        print("Error joining chat")
-        return
-      }
-      outputStream.write(pointer, maxLength: data.count)
+  @objc dynamic open func sendMessage(message: String) -> Bool{
+    let data = [UInt8](message.utf8)
+    let bytesWritten = outputStream.write(data, maxLength: data.count)
+    if bytesWritten > -1 {
+      return true 
     }
+    return false
   }
   
   @objc dynamic open func closePrinter() {

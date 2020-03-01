@@ -17,7 +17,7 @@
     "url": "https://github.com/growerp/nativescript-escpos-printer.git"
   },
   "author": {
-    "name": "GrowERP: Hans Bakker"
+    "name": "Hans Bakker"
   },
   "bugs": {
     "url": "https://github.com/growerp/nativescript-escpos-printer/issues"
@@ -41,11 +41,9 @@
     "clean": "npm run demo.reset && npx rimraf -- node_modules package-lock.json && npm i"
   },
   "nativescript": {
-    "tns-android": {
-      "version": "6.3.1"
-    },
-    "tns-ios": {
-      "version": "6.3.0"
+    "platforms": {
+      "android": "6.4.1",
+      "ios": "6.3.0"
     }
   },
   "devDependencies": {
